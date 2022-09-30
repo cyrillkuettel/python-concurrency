@@ -1,3 +1,10 @@
+"""
+
+Just Hammers the server with requests.
+
+"""
+
+
 import time
 
 from socket import *

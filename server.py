@@ -1,5 +1,8 @@
 # server.py
 # fibonacci microservice
+# A very simple socket programming demonstration.
+
+
 from socket import *
 from threading import Thread
 from fib import fib
@@ -17,9 +20,12 @@ def fib_server(address):
         Thread(target=fib_handler, args=(client,), daemon=True).start()
 
 
+"""
+Just does nothing. Intentionally mundane for demonstration purposes.
+"""
 def fib_handler(client):
     while True:
-        req = client.recv(100)
+        req = client.recv(buflen=100)
         if not req:
             break
         try:
