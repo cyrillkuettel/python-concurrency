@@ -6,8 +6,9 @@
 from socket import *
 from threading import Thread
 from fib import fib
+from concurrent.futures import ProcessPoolExecutor as Pool
 
-
+pool = Pool(4)
 def fib_server(address):
     sock = socket(AF_INET, SOCK_STREAM)
     sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
@@ -25,12 +26,14 @@ Just does nothing. Intentionally mundane for demonstration purposes.
 """
 def fib_handler(client):
     while True:
-        req = client.recv(buflen=100)
+        req = client.recv(100)
         if not req:
             break
         try:
             n = int(req)
-            result = fib(n)
+            # submit jobs to processpool and wait for the result
+            future = pool.submit(fib, n)
+            result = future.result()
             resp = str(result).encode("ascii") + b'\n'
             client.send(resp)
         except ValueError:
