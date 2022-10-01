@@ -17,13 +17,14 @@ def fib_server(address):
     while True:
         client, addr = sock.accept()
         print("Connection", addr)
-        # kind of a one liner thing:
         Thread(target=fib_handler, args=(client,), daemon=True).start()
 
 
 """
 Just does nothing. Intentionally mundane for demonstration purposes.
 """
+
+
 def fib_handler(client):
     while True:
         req = client.recv(100)
@@ -34,7 +35,7 @@ def fib_handler(client):
             # submit jobs to processpool and wait for the result
             future = pool.submit(fib, n)
             result = future.result()
-            resp = str(result).encode("ascii") + b'\n'
+            resp = str(result).encode("ascii") + b"\n"
             client.send(resp)
         except ValueError:
             print("nope")

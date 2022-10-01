@@ -1,6 +1,8 @@
 Server 
 ===========================
 demonstrating multiple concurrency patterns
+There are currently three popular approaches to Python concurrency: threads, event 
+loops, and coroutines 
 
 Run
 ========================
