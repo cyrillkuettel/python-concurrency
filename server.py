@@ -9,6 +9,8 @@ from fib import fib
 from concurrent.futures import ProcessPoolExecutor as Pool
 
 pool = Pool(4)
+
+
 def fib_server(address):
     sock = socket(AF_INET, SOCK_STREAM)
     sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
