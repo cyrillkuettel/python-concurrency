@@ -12,9 +12,16 @@ netcat localhost 25000 # new shell
 netcat localhost 25000 # new shell
 ```
 
+Or, load test the server a bit:
+```bash
+python3 server.py
+python3 perf2.py  # new shell
+```
 quick commands: restart
 ===========================
-If you want to restart it.
+In case you get `[Errno 48] Address already in use`, a quick way to restart is to 
+just kill the process:
+
 
 ```console
 Traceback (most recent call last):
@@ -30,7 +37,7 @@ Just restart the server:
   ~/ ps aux | grep server.py   
                                
 <username>     4622   0.0  0.0 34135432   7552 s003  S+   11:22PM   0:00.04 python3 server.py
-  ~/ kill 4622  
+  ~/ kill -9 4622  
   ~/ python3 server.py        
                                    
 ```
