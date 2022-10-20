@@ -1,10 +1,11 @@
 Server 
 ===========================
-demonstrating multiple concurrency patterns
-There are currently three popular approaches to Python concurrency: threads, event 
-loops, and coroutines 
+This are some concurrency experiments with sockets. By a large part inspired (read: copied) from the phenomenal talk: [David Beazley - Python Concurrency From the Ground Up: LIVE! - PyCon 2015](https://youtu.be/MCs5OvhV9S4)
 
-Run
+There are currently three popular approaches to Python concurrency: threads, event 
+loops, and coroutines. Threads are widely known, other options not so much. 
+
+Run Development
 ========================
 ```bash
 python3 server.py
@@ -17,8 +18,8 @@ Or, load test the server a bit:
 python3 server.py
 python3 perf2.py  # new shell
 ```
-quick commands: restart
-===========================
+# Common Issues
+## quick commands: restart
 In case you get `[Errno 48] Address already in use`, a quick way to restart is to 
 just kill the process:
 
